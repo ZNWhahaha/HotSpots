@@ -51,7 +51,7 @@ public class App
 
                 String value = Bytes.toString(cell.getValueArray(), cell.getValueOffset(), cell.getValueLength());
 
-                if (colName.equals("time") && value.split("\\s+|\\t")[0].equals(year)){
+                if (colName.equals("time") && value.contains(year)){
                     //System.out.println(colName+"  "+value);
                     flag = true;
                 }
@@ -85,7 +85,7 @@ public class App
 
         //链接数据库
         Class.forName(jdbcname);
-        java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://10.0.252.45:3306/zldata?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC","root","bigdata302");
+        java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://10.0.252.45:3306/zldata?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=utf8","root","bigdata302");
 
         //存入item数据
         PreparedStatement preparedStatement = con.prepareStatement(sql);
@@ -118,7 +118,7 @@ public class App
                 for (int i = 0; i < hotspot.length; i++) {
                       if (hotspot[i][4].indexOf(ss) != -1){
                           hotspot[i][5] = String.valueOf(Integer.valueOf(hotspot[i][5]) + 1);
-                          System.out.println("111111");
+
                       }
                 }
             }
@@ -188,6 +188,7 @@ public class App
 
         //提取txt文件内容
         String[][] hotspot = ParsingTxTFile();
+        //GetHbaseTableCell(htablename,"2017");
         //按年份逐步执行
         for (int i = beginyear; i <= endyear; i++) {
             //获取对应年份的图书分类号
