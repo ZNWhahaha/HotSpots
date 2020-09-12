@@ -103,7 +103,7 @@ public class App
 
     /**
      * @ClassName : App
-     * @Description : 功能说明
+     * @Description : 功能说明：计算小类的数值
      * @param hotspot
      * @param arrayList
      * @Return : void
@@ -112,16 +112,48 @@ public class App
     */
     public static void DatasCount(String[][] hotspot,ArrayList<String> arrayList){
         String[] sortnumbs;
+//        for (String al : arrayList){
+//            sortnumbs = al.split("\\s+|\\t");
+//            for (String ss: sortnumbs){
+//                for (int i = 0; i < hotspot.length; i++) {
+//                      if (Integer.valueOf(hotspot[i][0]) <100 && hotspot[i][4].contains(ss)){
+//                          hotspot[i][5] = String.valueOf(Integer.valueOf(hotspot[i][5]) + 1);
+//                      }
+//                }
+//            }
+//        }
         for (String al : arrayList){
-            sortnumbs = al.split("\\s+|\\t");
-            for (String ss: sortnumbs){
-                for (int i = 0; i < hotspot.length; i++) {
-                      if (hotspot[i][4].indexOf(ss) != -1){
-                          hotspot[i][5] = String.valueOf(Integer.valueOf(hotspot[i][5]) + 1);
+            for (int i = 0; i < hotspot.length; i++) {
+                sortnumbs = hotspot[i][4].split("、");
+                for (String ss : sortnumbs){
+                    if (Integer.valueOf(hotspot[i][0]) < 100 && al.contains(ss)){
+                        hotspot[i][5] = String.valueOf(Integer.valueOf(hotspot[i][5]) + 1);
+                    }
+                }
 
-                      }
+            }
+
+        }
+    }
+
+    /**
+     * @ClassName : App
+     * @Description : 功能说明:当小类全部统计完毕后，计算大类
+     * @param hotspot
+
+     * @Return : void
+     * @Author : ZNWhahaha
+     * @Date : 2020/9/9
+    */
+    public static void DatasCount_Big(String[][] hotspot){
+        for (int i = 1 ; i < 11 ; i++){
+            int num = 0;
+            for (int j = 0; j < hotspot.length - 10; j++) {
+                if (hotspot[j][1].equals(hotspot[hotspot.length-i][0])){  //怀疑此处有问题
+                    num += Integer.valueOf(hotspot[j][5]);
                 }
             }
+            hotspot[i][5] = String.valueOf(num);
         }
     }
 
@@ -193,8 +225,9 @@ public class App
         for (int i = beginyear; i <= endyear; i++) {
             //获取对应年份的图书分类号
             ArrayList<String> sortnumbers = GetHbaseTableCell(htablename,String.valueOf(i));
-            //对论文的图书分类号进行计数，并将结果报错在hotspot数组中
+            //对论文的图书分类号进行计数，并将结果保存在hotspot数组中
             DatasCount(hotspot,sortnumbers);
+            DatasCount_Big(hotspot);
             //提取hotspot数组信息传递至HotSpotItem中，再存储至Mysql数据库中
             for (String[] mem :hotspot){
                 item.setId(mem[0]);
