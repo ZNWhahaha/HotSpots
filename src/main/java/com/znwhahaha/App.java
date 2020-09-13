@@ -149,7 +149,7 @@ public class App
         for (int i = 1 ; i < 11 ; i++){
             int num = 0;
             for (int j = 0; j < hotspot.length - 10; j++) {
-                if (hotspot[j][1].equals(hotspot[hotspot.length-i][0])){  //怀疑此处有问题
+                if (hotspot[j][1].equals(hotspot[hotspot.length-i][0])){  
                     num += Integer.valueOf(hotspot[j][5]);
                 }
             }
