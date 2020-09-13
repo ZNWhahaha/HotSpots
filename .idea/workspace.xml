@@ -8,9 +8,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7fccbcd2-fc4a-400c-a225-3f6ab072752d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/HotSpots_jar/HotSpots.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/HotSpots_jar/HotSpots.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/znwhahaha/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/znwhahaha/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/znwhahaha/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/znwhahaha/App.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -94,7 +92,7 @@
       <workItem from="1598925149892" duration="25769000" />
       <workItem from="1599445936646" duration="553000" />
       <workItem from="1599529878336" duration="5878000" />
-      <workItem from="1599817678787" duration="826000" />
+      <workItem from="1599817678787" duration="2762000" />
     </task>
     <servers />
   </component>

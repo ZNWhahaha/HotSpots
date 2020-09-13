@@ -153,7 +153,7 @@ public class App
                     num += Integer.valueOf(hotspot[j][5]);
                 }
             }
-            hotspot[i][5] = String.valueOf(num);
+            hotspot[hotspot.length-i][5] = String.valueOf(num);
         }
     }
 
@@ -180,7 +180,7 @@ public class App
             while((lineTxt = bufferedReader.readLine()) != null && index < hotspot.length){
 //                System.out.println(lineTxt);
                 hotspot[index] = lineTxt.split("\\s+|\\t");
-                
+
                 index++;
             }
             inputStreamReader.close();
